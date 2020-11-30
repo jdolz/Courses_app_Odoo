@@ -37,10 +37,10 @@
                 <field name="duration"/>
                 <field name="contents"/>
                 <field name="professor"/>
-                <field name="price"/>€
+                <field name="price"/>
                 <field name="number_employees"/>
                 <field name="certificate"/>
-                <field name="total" sum="Total"/>€
+                <field name="total" sum="Total"/>
             </tree>
         </field>
     </record>
