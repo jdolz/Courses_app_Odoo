@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Action to open To-do Task list -->
+    <act_window
+            id="action_courses_course"
+            name="Courses"
+            res_model="courses.course"
+            view_mode="tree,form"
+    />
+    <!-- top level menu: no parent -->
+    <menuitem
+            id="main_menu_courses_course"
+            name="Courses Application"
+    />
+    <!-- A first level in the left side menu is needed
+        before using action= attribute -->
+    <menuitem
+            id="l1_menu_courses_course"
+            name="Courses"
+            parent="main_menu_courses_course"
+    />
+    <!-- Menu item to open To-do Task list -->
+    <menuitem
+            id="menu_courses_course"
+            name="Courses"
+            parent="l1_menu_courses_course"
+            action="action_courses_course"
+    />
+    <!-- Vista de listado -->
+    <record id="view_tree_courses_course" model="ir.ui.view">
+        <field name="name">Courses Course Tree</field>
+        <field name="model">courses.course</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="date_ini"/>
+                <field name="name"/>
+                <field name="duration"/>
+                <field name="contents"/>
+                <field name="professor"/>
+                <field name="price"/>€
+                <field name="number_employees"/>
+                <field name="certificate"/>
+                <field name="total" sum="Total"/>€
+            </tree>
+        </field>
+    </record>
+    <!-- Vista de búsqueda -->
+    <record id="view_filter_courses_course" model="ir.ui.view">
+        <field name="name">Courses Course Filter</field>
+        <field name="model">courses.course</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <filter name="done" string="Hechas" domain="[('is_done','!=',False)]"/>
+            </search>
+        </field>
+    </record>
+    <!-- Vista de Formulario -->
+    <record id="view_form_courses_course" model="ir.ui.view">
+        <field name="name">Courses Course Form</field>
+        <field name="model">courses.course</field>
+        <field name="arch" type="xml">
+            <form>
+                <!-- <header>
+                    <button name="do_marcar" type="object" string="Marcar hechas" class="oe_highlight" />
+                    <button name="do_limpiar" type="object" string="Limpiar hechas" />
+                </header> -->
+                <sheet>
+                    <group name="group_top">
+                        <group name="group_left">
+                            <field name="name"/>
+                            <field name="price"/>
+                            <field name="number_employees"/>
+                            <field name="certificate"/>
+                            <field name="contents"/>
+                        </group>
+                        <group name="group_right">
+                            <field name="professor"/>
+                            <field name="date_ini"/>
+                            <field name="duration"/>
+                            <field name="total"/>
+                            <!-- <field name="is_done"/>
+                            <field name="active" readonly="1"/> -->
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
